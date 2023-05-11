@@ -42,9 +42,8 @@ jobs:
         coverage report
         coverage xml
 
-    - name: Upload coverage report to Codecov
-      uses: codecov/codecov-action@v2
+    - name: Upload coverage report as artifact
+      uses: actions/upload-artifact@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        fail_ci_if_error: true
-        files: ./coverage.xml
+        name: coverage-report
+        path: ./coverage.xml
