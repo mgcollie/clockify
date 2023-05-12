@@ -1,8 +1,6 @@
 import uvicorn
 from chronotrigger import *
 from fastapi import FastAPI, HTTPException
-from fastapi.openapi.docs import get_swagger_ui_html
-from fastapi.staticfiles import StaticFiles
 from functools import wraps
 
 
