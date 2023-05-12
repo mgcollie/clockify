@@ -1,4 +1,9 @@
+import os
 from .base import *
+from dotenv import load_dotenv
+
+load_dotenv()
+clockify_api_key = os.getenv('CLOCKIFY_API_KEY')
 
 
 class ClockifyAPIWrapper(BaseAPIWrapper):
@@ -18,3 +23,6 @@ class ClockifyAPIWrapper(BaseAPIWrapper):
     def delete(self, id: str) -> Dict[str, Any]:
         # Implement Clockify-specific delete operation
         pass
+
+    def info(self) -> Dict[str, Any]:
+        return {'api_key': clockify_api_key}

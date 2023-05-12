@@ -3,6 +3,7 @@ from chronotrigger import *
 from fastapi import FastAPI, HTTPException
 from functools import wraps
 
+
 app = FastAPI()
 wrappers = {"clockify": ClockifyAPIWrapper(), "timeular": TimeularAPIWrapper()}
 
