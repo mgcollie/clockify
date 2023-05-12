@@ -1,6 +1,8 @@
 import uvicorn
 from chronotrigger import *
 from fastapi import FastAPI, HTTPException
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.staticfiles import StaticFiles
 from functools import wraps
 
 
@@ -41,6 +43,12 @@ async def update_v1(service: str, data: dict):
 @validate_service
 async def delete_v1(service: str, data: dict):
     return wrappers[service].delete(data)
+
+
+@app.get("/api/v1/{service}/info/")
+@validate_service
+def info_v1(service: str):
+    return wrappers[service].info()
 
 
 if __name__ == "__main__":
