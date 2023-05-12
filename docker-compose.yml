@@ -1,0 +1,17 @@
+version: '2'
+services:
+  api:
+    tty: true
+    restart: always
+    build: .
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - 8000:8000
+    tty: true
+    links:
+      - api
